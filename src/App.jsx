@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllUsers } from "./assets/slices/usersSlice";
-import Login from "./Components/Login";
+import { selectAllUsers } from "./store/usersSlice";
+import { Outlet } from "react-router-dom";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 function App() {
   const users = useSelector(selectAllUsers);
@@ -9,12 +11,9 @@ function App() {
 
   return (
     <>
-      {/* <div className="h-screen w-screen bg-gray-400 absolute">
-        <h1 className="text-xl text-teal-950 flex justify-center mt-8">
-          Hey guys This gon be the Game we call GuessTheWord
-        </h1>
-      </div> */}
-      <Login />
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   );
 }

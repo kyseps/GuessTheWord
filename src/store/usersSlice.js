@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { supabase } from "../../supabase/supaBase";
+import { supabase } from "../supabase/supaBase";
 
 const data = await supabase.from("Users").select("*");
 const initialState = {
@@ -14,6 +14,9 @@ const usersSlice = createSlice({
   reducers: {
     addUser: (state) => {
       state.users;
+    },
+    removeUser: (state) => {
+      state.users.users;
     },
   },
 });
