@@ -21,7 +21,7 @@ export default function Header() {
             />
             <AvatarFallback>prof</AvatarFallback>
           </Avatar>
-          <Button variant="destructive" className="h-10 w-10 text-[12px]">
+          <Button variant="destructive" className="h-10 w-12 text-[12px]">
             LogOut
           </Button>
         </div>
