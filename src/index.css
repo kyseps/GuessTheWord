@@ -63,3 +63,8 @@ body {
   transition-duration: 0.5s;
   transform: rotate(180deg);
 }
+
+.active {
+  background-color: #e1c45a;
+  border-radius: 5%;
+}
