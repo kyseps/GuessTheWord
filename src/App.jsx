@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllUsers } from "./store/usersSlice";
+import { selectAllUsers } from ".//utils/store/Slices/usersSlice";
 import { Outlet } from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
 function App() {
   const users = useSelector(selectAllUsers);
-  console.log(users);
   const dispatch = useDispatch();
 
   return (
@@ -14,6 +14,7 @@ function App() {
       <Header />
       <Outlet />
       <Footer />
+      <Toaster />
     </>
   );
 }

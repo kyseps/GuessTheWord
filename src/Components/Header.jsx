@@ -12,7 +12,7 @@ import {
 export default function Header() {
   return (
     <section className="flex bg-[#333333] border-b-4 border-[#28D669]">
-      <div className="container mx-auto flex p-2 items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between">
         <div className="flex bg-red-500 rounded-3xl">
           <Avatar className="">
             <AvatarImage

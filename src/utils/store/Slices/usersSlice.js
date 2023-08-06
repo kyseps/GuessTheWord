@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { supabase } from "../supabase/supaBase";
+import { supabase } from "../../supabase/supabase";
 
 const data = await supabase.from("Users").select("*");
 const initialState = {
   users: ["hamid", "saeed"],
 };
-
-console.log(data);
 
 const usersSlice = createSlice({
   name: "users",

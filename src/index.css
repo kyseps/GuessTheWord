@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  box-sizing: border-box;
-}
+
 #checkbox {
   display: none;
 }
@@ -66,5 +64,4 @@ body {
 
 .active {
   background-color: #e1c45a;
-  border-radius: 5%;
 }
