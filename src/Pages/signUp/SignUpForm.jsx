@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../../utils/supabase/supabase";
 import { useToast } from "@/components/ui/use-toast";
 import { redirect } from "react-router-dom";
+import { ErrorMessage } from "@hookform/error-message";
 
 export default function SignUpForm() {
+  const [fetchError, setFetchError] = useState(null);
   const { toast } = useToast();
-  const { handleSubmit, register, setValue } = useForm({
+  const {
+    handleSubmit,
+    register,
+    setValue,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       Email: "example@gmail.com",
       Password: "!Aa1",
@@ -19,8 +26,6 @@ export default function SignUpForm() {
       password: Password,
     });
 
-    console.log(data);
-
     if (data.user) {
       toast({
         title: "SignUp successful",
@@ -28,6 +33,10 @@ export default function SignUpForm() {
       });
 
       setTimeout(() => redirect("/"), 2000);
+    }
+
+    if (error) {
+      console.log(error);
     }
 
     setValue("Email", "");
@@ -51,6 +60,11 @@ export default function SignUpForm() {
             },
           })}
         />
+        <ErrorMessage
+          errors={errors}
+          name="Email"
+          render={({ message }) => <p className="text-red-600">{message}</p>}
+        />
         <label className="font-black" htmlFor="Password">
           Password
         </label>
@@ -64,6 +78,11 @@ export default function SignUpForm() {
               message: "Password not valid ",
             },
           })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="Password"
+          render={({ message }) => <p className="text-red-600">{message}</p>}
         />
 
         <button

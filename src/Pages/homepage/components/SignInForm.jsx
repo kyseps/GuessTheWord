@@ -2,7 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { supabase } from "../../../utils/supabase/supabase";
-("../../../utils/supabase/supabase");
+
+import { ErrorMessage } from "@hookform/error-message";
 
 export default function SignInForm() {
   async function signUpUser() {
@@ -12,7 +13,12 @@ export default function SignInForm() {
     });
   }
 
-  const { handleSubmit, register, control } = useForm({
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       Email: "example@gmail.com",
       Password: "!Aa1",
@@ -35,6 +41,11 @@ export default function SignInForm() {
             },
           })}
         />
+        <ErrorMessage
+          errors={errors}
+          name="Email"
+          render={({ message }) => <p className="text-red-600">{message}</p>}
+        />
         <label className="font-black" htmlFor="Password">
           Password
         </label>
@@ -49,9 +60,14 @@ export default function SignInForm() {
             },
           })}
         />
+        <ErrorMessage
+          errors={errors}
+          name="Password"
+          render={({ message }) => <p className="text-red-600">{message}</p>}
+        />
         <div className="flex gap-4">
           <p>Don't have an account yet?</p>
-          <Link to="/signUp" replace className="text-blue-800">
+          <Link to="/signUp" replace className="text-blue-950">
             SignUp
           </Link>
           <p>now</p>
